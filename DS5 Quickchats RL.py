@@ -54,16 +54,6 @@ variations = {
         'Sorry about that mistake',
         'Whoopsie... Sorry.'
     ],
-    'Encouragement': [
-        'You\'ve got the skills!',
-        'Keep it up, we\'re doing great!',
-        'Believe in yourself!'
-    ],
-    'Team Spirit': [
-        'Teamwork makes the dream work',
-        'Together we can do it',
-        'We\'ve got this, team'
-    ],
     'affirmation': [
         '...maybe',
         '...possibly',
@@ -364,35 +354,35 @@ while True:
                 toggleMacros('ps')
                 if macrosOn:
                     if sequence('up', 'up'):
-                        send_quick_chat("I got it" + variation('affirmation') + "!")
+                        send_quick_chat("I got it" + variation('affirmation'))
                     elif sequence('up', 'down'):
-                        send_quick_chat("Defending... but don't expect too much from me" + variation('affirmation') + "!")
+                        send_quick_chat("Defending... but don't expect too much from me" + variation('affirmation'))
                     elif sequence('down', 'up'):
-                        send_quick_chat("OH SNAP! Hey there, " + variation('friend') + ".")
+                        send_quick_chat("OH SNAP! Hey there, " + variation('friend'))
                     elif sequence('left', 'up'):
-                        send_quick_chat("Nice shot! Or was that a great pass? Either way, " + variation('compliment').lower() + ".")
+                        send_quick_chat("Nice shot! Or was that a great pass? Either way, " + variation('compliment').lower())
                     elif sequence('right', 'up'):
-                        send_quick_chat("Centering! Just kidding, " + variation('foe').lower() + ".")
+                        send_quick_chat("Centering! Just kidding, " + variation('foe').lower())
                     elif sequence('left', 'right'):
-                        send_quick_chat("Thanks! It was totally accidental, of course, my " + variation('friend') + ".")
+                        send_quick_chat("Thanks! It was totally accidental, of course, my " + variation('friend') )
                     elif sequence('left', 'down'):
-                        send_quick_chat("HA! " + variation('Celebration').lower() + "!")
+                        send_quick_chat("HA! " + variation('Celebration').lower())
                     elif sequence('left', 'left'):
-                        send_quick_chat(variation('Acknowledgment').capitalize() + "!")
+                        send_quick_chat(variation('Acknowledgment').capitalize())
                     elif sequence('up', 'right'):
-                        send_quick_chat(variation('Confidence Boost').capitalize() + "!")
+                        send_quick_chat(variation('Confidence Boost').capitalize())
                     elif sequence('up', 'left'):
-                        send_quick_chat("Need boost! Seriously, I'm always running on empty, sorry " + variation('friend') + ".")
+                        send_quick_chat("Need boost! Seriously, I'm always running on empty, sorry " + variation('friend'))
                     elif sequence('down', 'right'):
-                        send_quick_chat("No problem. I mean, it might be your fault, " + variation('foe').lower() + ".")
+                        send_quick_chat("No problem. I mean, it might be your fault, " + variation('foe').lower())
                     elif sequence('down', 'left'):
-                        send_quick_chat(variation('Apology').capitalize() + "!")
+                        send_quick_chat(variation('Apology').capitalize())
                     elif sequence('right', 'left'):
-                        send_quick_chat(variation('Celebration').capitalize() + "!")
+                        send_quick_chat(variation('compliment').capitalize())
                     elif sequence('right', 'right'):
-                        send_quick_chat(variation('Encouraging Taunt').capitalize() + "!")
+                        send_quick_chat(variation('Encouraging Taunt').capitalize())
                     elif sequence('right', 'down'):
-                        send_quick_chat("Scored that goal! " + variation('Challenge').lower() + ".")
+                        send_quick_chat(" " + variation('Challenge').lower())
                     elif sequence('down', 'down'):
                         send_quick_chat(variation('cat fact').capitalize())
     except Exception as e:

@@ -8,93 +8,122 @@ recent_messages = []
 
 # Create your own word variations and format them like this (see examples on how to use them in the "edit" section below)
 variations = {
+    'Challenge': [
+        'I dare you to score',
+        'Try to beat that!',
+        'Challenge accepted'
+    ],
+    'Confidence Boost': [
+        'We\'re unstoppable!',
+        'No one can beat us',
+        'Confidence is key'
+    ],
+    'Encouraging Taunt': [
+        'Is that all you\'ve got?',
+        'Nice try, but not enough',
+        'You\'re getting warmer! Keep pushing!',
+        'Not bad, but can you top it?',
+        'You\'re almost there! Don\'t stop now.',
+        'Getting better with every try!',
+        'You\'re on the right track; now, let\'s speed it up!',
+        'Impressive, but I\'ve seen you do better!',
+        'Keep trying, you\'re almost unbeatable!',
+        'You\'re a force to be reckoned with!'
+        'You can do better than that.'
+    ],
+    'Celebration': [
+        'Great job, team!',
+        'We\'re on fire!',
+        'Calculated.',
+        'WINNING!'
+    ],
+    'Apology': [
+        'My bad, that was on me',
+        'Sorry about that mistake',
+        'Whoopsie... Sorry.'
+    ],
+    'Encouragement': [
+        'You\'ve got the skills!',
+        'Keep it up, we\'re doing great!',
+        'Believe in yourself!'
+    ],
+    'Team Spirit': [
+        'Teamwork makes the dream work',
+        'Together we can do it',
+        'We\'ve got this, team'
+    ],
     'affirmation': [
         '...maybe',
         '...possibly',
         '...sometimes',
-        '...most likely',
         '...probably',
         '...definitely',
         '...no doubt',
-        '...on every alternate Tuesday',
-        '...unless it’s a full moon',
-        '...only if the WiFi signal is strong',
-        '...assuming I\'ve had my coffee',
-        '...only in leap years',
-        '...give or take',
-        '...depending on the wind direction',
-        '...when planets align',
-        '...but don\'t quote me on that',
-        '...if stars give the thumbs up',
+        '...on every alternate Tuesday.',
+        '...unless it’s a full moon.',
+        '...only if the WiFi signal is strong.',
+        '...assuming I\'ve had my coffee.',
+        '...only in leap years.',
+        '...give or take.',
+        '...depending on the wind direction'.,
+        '...if planets align.',
+        '...but don\'t quote me on that!',
         '...unless I forgot my socks',
-        '...if it\'s not raining cats and dogs',
-        '...but that\'s just a hunch'
+        '...if it\'s not raining cats and dogs and whatnot.',
     ],
     'friend': [
-        'buddy',
-        'pal',
-        'mate',
-        'champ',
-        'my friend',
-        'comrade',
+        'ole Buddy.',
+        'Pal.',
+        'Mate.',
+        'Champ.',
+        'Comrade',
         'fellow gamer',
         'brother',
-        'bro',
-        'bruh',
-        'dude from another latitude',
-        'partner in meme-crime',
-        'my favorite keyboard warrior',
-        'pixel pal',
-        'virtual high-fiver',
-        'old sport',
+        'Bro!',
+        'My Dude from another Latitude!',
+        'My Partner in Digital-Crime!',
+        'My Pixel Pal!',
         'home skillet',
-        'chief',
-        'amigo',
-        'my digital sidekick'
+        'Hey Chief!',
+        'Mi Amigo!',
+        'My Digital Sidekick!'
     ],
     'foe': [
-        'rival',
-        'opponent',
-        'challenger',
-        'competitor',
-        'adversary',
-        'nemesis',
-        'antagonist',
-        'my digital dance partner',
-        'keyboard kombatant',
-        'the other player I guess',
-        'the one who dares',
-        'you, yes you',
-        'the mysterious stranger',
-        'the shadow player',
-        'the ever-elusive gamer',
-        'the pixelated enemy',
-        'the digital doppelganger',
-        'the joystick jouster',
-        'the button basher',
-        'the console conqueror'
+        'Aggressive Rival.',
+        'Mr. Challenger.',
+        'Competitor.',
+        'Primary Adversary.',
+        'Nemesis.',
+        'Antagonist.',
+        'Digital Dance Partner.',
+        'Keyboard Kombatant.',
+        'Mysterious Stranger.',
+        'Pixelated Enemy.',
+        'you Digital Doppelganger.',
+        'you Joystick Jouster.',
+        'you Button Basher.',
+        'Console Conqueror.'
     ],
     'compliment': [
-        'great',
-        'awesome',
-        'amazing',
-        'fantastic',
-        'impressive',
-        'excellent',
-        'superb',
-        'outstanding',
-        'stellar',
-        'splendid',
-        'more legendary than a unicorn',
-        'cooler than a polar bear’s toenails',
-        'shinier than a freshly waxed penguin',
-        'as epic as a double rainbow',
-        'worthy of a mic drop',
-        'as dazzling as fireworks',
-        'as radiant as the morning sun',
-        'as electrifying as a thunderstorm',
-        'a true maestro',
-        'nothing short of magic'
+        'Great!',
+        'Awesome!',
+        'Amazing!',
+        'Fantastic!',
+        'Impressive!',
+        'Excellent!',
+        'Outstanding!',
+        'Stellar!',
+        'Splendid!',
+        'More Legendary than a Unicorn!',
+        'Cooler than a Polar Bear’s Toenails!',
+        'Shinier than a freshly waxed Penguin.',
+        'As epic as a double rainbow!',
+        'Worthy of a mic drop!',
+        'As dazzling as fireworks!',
+        'As radiant as the morning sun!',
+        'As electrifying as a thunderstorm!',
+        'A True Maestro!',
+        'Nothing Short of Magic!'
     ],
     'cat fact': [
         'Cats have been domesticated for over 4,000 years.',
@@ -323,36 +352,37 @@ while True:
                 toggleMacros('ps')
                 if macrosOn:
                     if sequence('up', 'up'):
-                        send_quick_chat("I got it" + variation('affirmation'))
+                        send_quick_chat("I got it" + variation('affirmation') + "!")
                     elif sequence('up', 'down'):
-                        send_quick_chat("Defending... but don't expect too much from me" + variation('affirmation'))
+                        send_quick_chat("Defending... but don't expect too much from me" + variation('affirmation') + "!")
                     elif sequence('down', 'up'):
-                        send_quick_chat("OH SNAP!" + variation('friend'))
+                        send_quick_chat("OH SNAP! Hey there, " + variation('friend') + ".")
                     elif sequence('left', 'up'):
-                        send_quick_chat("Nice Shot! Or great pass! or... something. It's in" + variation('compliment'))
+                        send_quick_chat("Nice shot! Or was that a great pass? Either way, " + variation('compliment').lower() + ".")
                     elif sequence('right', 'up'):
-                        send_quick_chat("Centering! Just kidding, it's going nowhere" + variation('foe'))
+                        send_quick_chat("Centering! Just kidding, " + variation('foe').lower() + ".")
                     elif sequence('left', 'right'):
-                        send_quick_chat("Thanks! Totally accidental, of course" + variation('friend'))
+                        send_quick_chat("Thanks! It was totally accidental, of course, my " + variation('friend') + ".")
                     elif sequence('left', 'down'):
-                        send_quick_chat("WHAT A SAVE! WHAT A SAVE! WHAT A SAVE! QUICKCHAT DISABLED... cept not" + variation('foe'))
+                        send_quick_chat("HA! " + variation('Celebration').lower() + "!")
                     elif sequence('left', 'left'):
-                        send_quick_chat("Great pass! Or Nice shot!... It went in anyway" + variation('compliment'))
+                        send_quick_chat(variation('Acknowledgment').capitalize() + "!")
                     elif sequence('up', 'right'):
-                        send_quick_chat("Let me cook! Hope you like a burnt meal" + variation('foe'))
+                        send_quick_chat(variation('Confidence Boost').capitalize() + "!")
                     elif sequence('up', 'left'):
-                        send_quick_chat("Need boost! I'm always running on empty" + variation('friend'))
+                        send_quick_chat("Need boost! Seriously, I'm always running on empty, sorry " + variation('friend') + ".")
                     elif sequence('down', 'right'):
-                        send_quick_chat("No problem. I mean, it's totally your fault, but no problem" + variation('foe'))
-                    elif sequence('down', 'up'):
-                        send_quick_chat("Whoops! I swear, it looked better in my head" + variation('compliment'))
+                        send_quick_chat("No problem. I mean, it might be your fault, " + variation('foe').lower() + ".")
+                    elif sequence('down', 'left'):
+                        send_quick_chat(variation('Apology').capitalize() + "!")
                     elif sequence('right', 'left'):
-                        send_quick_chat("Close one! Just like my chances of winning" + variation('friend'))
+                        send_quick_chat(variation('Celebration').capitalize() + "!")
                     elif sequence('right', 'right'):
-                        send_quick_chat("Wow! What an excellent performance... kinda" + variation('affirmation'))
+                        send_quick_chat(variation('Encouraging Taunt').capitalize() + "!")
+                    elif sequence('right', 'down'):
+                        send_quick_chat("Scored that goal! " + variation('Challenge').lower() + ".")
                     elif sequence('down', 'down'):
-                        send_quick_chat(variation('cat fact'))
+                        send_quick_chat(variation('cat fact').capitalize())
     except Exception as e:
         print(e)
         break
-

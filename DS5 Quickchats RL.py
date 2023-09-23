@@ -14,9 +14,21 @@ variations = {
         'Challenge accepted'
     ],
     'Confidence Boost': [
-        'We\'re unstoppable!',
-        'No one can beat us',
-        'Confidence is key'
+        'We\'re the Rocket League champions!',
+        'Our teamwork is unbeatable!',
+        'We\'re the best on the field!',
+        'No one can match our Rocket League skills!',
+        'Confidence in our plays leads to victory!',
+        'We\'ve got this game in the bag!',
+        'Trust in our abilities; we\'re unstoppable!',
+        'Our Rocket League prowess knows no bounds!',
+        'Believe in yourselves; we\'re the elite players!',
+        'The field is our playground; let\'s dominate!',
+        'Confidence breeds success; we\'re on fire!',
+        'We\'re the Rocket League dream team!',
+        'Our gameplay is top-notch; fear us!',
+        'No one can outplay us in Rocket League!',
+        'Confidence, teamwork, and victory – that\'s us!'
     ],
     'Encouraging Taunt': [
         'Is that all you\'ve got?',

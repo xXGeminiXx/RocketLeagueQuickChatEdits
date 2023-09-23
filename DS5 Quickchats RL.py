@@ -67,7 +67,7 @@ variations = {
         '...assuming I\'ve had my coffee.',
         '...only in leap years.',
         '...give or take.',
-        '...depending on the wind direction'.,
+        '...depending on the wind direction.',
         '...if planets align.',
         '...but don\'t quote me on that!',
         '...unless I forgot my socks',

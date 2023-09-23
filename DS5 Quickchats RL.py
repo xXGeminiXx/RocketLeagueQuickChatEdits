@@ -368,7 +368,7 @@ while True:
                     elif sequence('left', 'down'):
                         send_quick_chat("HA! " + variation('Celebration').lower())
                     elif sequence('left', 'left'):
-                        send_quick_chat(variation('Acknowledgment').capitalize())
+                        send_quick_chat(variation('compliment').capitalize())
                     elif sequence('up', 'right'):
                         send_quick_chat(variation('Confidence Boost').capitalize())
                     elif sequence('up', 'left'):

@@ -10,6 +10,10 @@ A fun controller macro script that sends randomized, funny quickchat messages in
 - Toggle on/off with the PS button
 - CAT FAX (the most important feature)
 
+## Is This Bannable?
+
+**No.** This script just types text into chat - exactly like you would with a keyboard. It doesn't read game memory, inject code, or modify game files. It's the same as using a chat macro on a gaming keyboard. Psyonix has never banned anyone for typing funny messages faster.
+
 ## Quick Start
 
 ### 1. Install dependencies

@@ -11,3 +11,6 @@ Thumbs.db
 
 # Optional persistence file (created when running with --persist)
 quickchat_state.json
+
+# Local backup copies
+* - Copy.py

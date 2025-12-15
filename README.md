@@ -1,84 +1,179 @@
-# DS5 / DualSense Rocket League Quickchats
+# DS5 Quickchats for Rocket League
 
-This script listens for **D-pad sequences** on a PlayStation controller (DualSense/DS4) and types fun custom “quick chats” into Rocket League using `pyautogui`.
+A fun controller macro script that sends randomized, funny quickchat messages in Rocket League using D-pad combos on a DualSense or DS4 controller.
 
-## Install
+**Features:**
+- 16 different D-pad combos for different message types
+- 200+ unique message variations (no boring repeats!)
+- Shuffle-bag randomization (guaranteed variety when spamming)
+- Message cooldown system (won't repeat the same message for 10 minutes)
+- Toggle on/off with the PS button
+- CAT FAX (the most important feature)
+
+## Quick Start
+
+### 1. Install dependencies
 
 ```bash
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-## Use
+### 2. Connect your controller
 
-1. Connect your controller (USB or Bluetooth).
-2. Start Rocket League.
-3. Make sure Rocket League is the **focused window** (the script types into whatever has focus).
-4. Run:
+USB or Bluetooth - either works.
+
+### 3. Run the script
 
 ```bash
 python DS5QuickchatsRL.py
 ```
 
-Optional:
+> **Important:** Run this from Windows Python (PowerShell/CMD), not WSL. The script needs to type into whatever window has focus, and WSL can't reach Windows apps.
 
-- List controllers detected by pygame:
+### 4. Play Rocket League
+
+Make sure Rocket League is the focused window, then use D-pad combos to send messages!
+
+## D-Pad Combos
+
+Press two D-pad directions in sequence (within ~1 second) to trigger a message:
+
+| Combo | Category | Example Message |
+|-------|----------|-----------------|
+| UP + UP | I Got It | "I got it! (Narrator: He did not.)" |
+| UP + DOWN | Defending | "Defending! I am the wall. A very porous wall." |
+| UP + LEFT | Need Boost | "Need boost! I'm running on hopes and fumes!" |
+| UP + RIGHT | Confidence | "We're the main characters. Act like it!" |
+| DOWN + UP | Greeting | "Hello! I'm here to kick ball and chew boost. And I'm all out of boost." |
+| DOWN + DOWN | Cat Facts | "CAT FAX: Cats have 32 muscles in each ear. They still won't hear 'rotate.'" |
+| DOWN + LEFT | Apology | "Sorry! I saw a boost pad and blacked out." |
+| DOWN + RIGHT | No Problem | "No problem! (It was absolutely your fault.)" |
+| LEFT + UP | Nice One | "Nice shot! That was illegal in at least 12 states." |
+| LEFT + DOWN | Celebration | "Peak Rocket League! Clip it! Send it to NASA!" |
+| LEFT + LEFT | Compliment | "Legendary!" |
+| LEFT + RIGHT | Thanks | "Thanks! You're my favorite random!" |
+| RIGHT + UP | Centering | "Centering! (Narrator: He was not centering.)" |
+| RIGHT + DOWN | Challenge | "1v1 me behind the boost pad." |
+| RIGHT + LEFT | Compliment | "Chef's kiss!" |
+| RIGHT + RIGHT | Taunt | "Nice try! That was almost a thing!" |
+
+**PS Button** = Toggle macros on/off
+
+## Command Line Options
 
 ```bash
+# Use team chat instead of all-chat
+python DS5QuickchatsRL.py --chat-mode team
+
+# Test without actually typing (prints to console)
+python DS5QuickchatsRL.py --dry-run
+
+# List detected controllers
 python DS5QuickchatsRL.py --list-devices
-```
 
-- Force ASCII-only output (helps if chat mangles smart quotes/dashes):
-
-```bash
+# Force ASCII-only output (if chat mangles special characters)
 python DS5QuickchatsRL.py --ascii
-```
 
-- Persist cooldown history across restarts (optional):
-
-```bash
+# Save message history across restarts (prevents repeats between sessions)
 python DS5QuickchatsRL.py --persist quickchat_state.json
 ```
 
-- Print messages instead of typing them:
+## How to Add Your Own Messages
 
-```bash
-python DS5QuickchatsRL.py --dry-run
+The script is designed to be easy to customize! Open `DS5QuickchatsRL.py` and look for the `variations` dictionary near the top.
+
+### Adding to an existing category
+
+Find the category you want to add to and add your message:
+
+```python
+"Nice One": [
+    "Nice shot! Was that intentional? Either way, WOW!",
+    "Nice one! That was cleaner than my room!",
+    # Add your own here:
+    "Your new message here!",
+],
 ```
 
-## Controls
+### Creating a new category
 
-- **PS button** toggles macros on/off.
-- Use **D-pad sequences** (press one direction then another within ~1.1s):
+Add a new entry to the `variations` dictionary:
 
-| Sequence | Message |
-|---|---|
-| Up → Up | `I got it{affirmation}` |
-| Up → Down | `Defending...{affirmation}` |
-| Down → Up | `OH SNAP! Hey there, {friend}` |
-| Left → Up | `Nice shot!... {compliment}` |
-| Right → Up | `Centering!... {foe}` |
-| Left → Right | `Thanks!... {friend}` |
-| Left → Down | `HA! {Celebration}` |
-| Left → Left | `{compliment}` |
-| Up → Right | `{Confidence Boost}` |
-| Up → Left | `Need boost!... {friend}` |
-| Down → Right | `No problem... {foe}` |
-| Down → Left | `{Apology}` |
-| Right → Left | `{compliment}` |
-| Right → Right | `{Encouraging Taunt}` |
-| Right → Down | `{Challenge}` |
-| Down → Down | `{cat fact}` (CAT FAX) |
+```python
+"My Custom Category": [
+    "First message variation",
+    "Second message variation",
+    "Third message variation",
+    # Add at least 3 for good variety
+],
+```
 
-## Customize
+Then assign it to a D-pad combo in the `MacroEngine._macros` dictionary:
 
-- Edit `variations` in `DS5QuickchatsRL.py` to add/remove phrases.
-- Edit `MacroEngine._macros` in `DS5QuickchatsRL.py` to change sequences and messages.
-- Messages support simple templating:
-  - `{friend}` inserts a random entry from the `"friend"` list.
-  - `{compliment:lower}` applies a modifier (`lower`, `upper`, `capitalize`, `title`).
-  - Variation keys are forgiving: `{Confidence_Boost}` and `{confidence boost}` both work.
+```python
+self._macros: Dict[Tuple[str, str], str] = {
+    # ... existing macros ...
+    ("left", "down"): "{My Custom Category}",  # Change an existing combo
+}
+```
 
-## Notes / Safety
+### Template syntax
 
-- `pyautogui` has a default fail-safe: moving your mouse to the top-left corner raises an exception to stop automation.
-- If you run this from **WSL**, it will not be able to type into Windows Rocket League. Use Windows Python (PowerShell/CMD) instead.
+Messages support simple templating to mix categories:
+
+```python
+"Hello {friend}!"                    # Inserts random friend variation
+"{compliment:lower}"                 # Lowercase modifier
+"{Confidence Boost:upper}"           # UPPERCASE modifier
+"Nice one, {friend:capitalize}!"     # Capitalize first letter
+```
+
+Available modifiers: `lower`, `upper`, `capitalize`, `title`
+
+## Tips for Good Messages
+
+- **Keep it under ~100 characters** - Rocket League chat has limits
+- **Add at least 10-15 variations** per category for good variety
+- **Mix genuine callouts with jokes** - variety is the spice of life
+- **Test with `--dry-run`** before using in-game
+
+## Troubleshooting
+
+### "No controllers detected"
+- Make sure your controller is connected (USB or Bluetooth)
+- Try unplugging and reconnecting
+- Run `python DS5QuickchatsRL.py --list-devices` to see what pygame detects
+
+### Messages aren't appearing in-game
+- Make sure Rocket League is the focused window
+- Check that your chat key bindings match (default: T for all-chat, Y for team)
+- If you rebound chat keys, edit `DEFAULT_CHAT_KEYS` in the script
+
+### Running from WSL doesn't work
+- That's expected! WSL can't send keystrokes to Windows apps
+- Run from Windows Python instead (PowerShell or CMD)
+
+### Messages have weird characters
+- Use `--ascii` flag to force ASCII-only output
+
+## Contributing
+
+Found a bug? Have a funny message idea? PRs welcome!
+
+1. Fork the repo
+2. Add your changes
+3. Test with `--dry-run`
+4. Submit a PR
+
+**Message guidelines:**
+- Keep it fun and Rocket League themed
+- Nothing toxic - this is for friendly banter
+- The funnier the better
+
+## License
+
+MIT License - Do whatever you want with it, just have fun in ranked.
+
+## Credits
+
+Made with chaos and caffeine. CAT FAX are the most important feature and this is not up for debate.
